@@ -1,6 +1,10 @@
 module.exports =
 class ToxFriendProtBase
-  constructor: (params) ->
-    @id      = params.id
-    @manager = params.manager
-    @sendCB  = params.sendCB
+  pInitBotProtocol: (params) ->
+    @pID      = params.id
+    @pManager = params.manager
+    @pSendCB  = params.sendCB
+
+    @pManager.addBot this
+
+  pReceivedCommand: (cmd) ->
