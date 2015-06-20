@@ -1,6 +1,6 @@
 module.exports =
 class GenResponse
-  @ping: (f) -> {"version": f.manager.versions}
+  @ping: (f) -> {"version": f.pManager.version}
 
   @gen: (r, f) ->
     throw {"id": 1, "msg": "Friend is undefined"}  unless f?
@@ -18,7 +18,7 @@ class GenResponse
     return false unless o.resp?
     return false unless o.id?
 
-    func = GenRequests[o.resp]
+    func = GenResponse[o.resp]
 
     return false unless func?
     comp = func f

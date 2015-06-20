@@ -8,6 +8,6 @@ class HandleResponse
     throw {"id": 1, "msg": "Friend is undefined"} unless f?
     throw {"id": 2, "msg": "Data is undefined"}   unless d?
 
-    func = HandleRequest[d.resp]
+    func = HandleResponse[d.resp]
     throw {"id": 3, "msg": "Unknown response"}    unless func?
     func d, f

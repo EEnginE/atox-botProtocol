@@ -53,7 +53,7 @@ class ToxFriendProtBase
 
     console.log ""
     console.log "Friend #{@pID} received:"
-    cosnole.log data
+    console.log data
 
     return @pHandleRequests data if data.cmd?
     return @pHandleResponse data if data.resp?
