@@ -3,6 +3,7 @@ class HandleResponse
   @ping: (d, f) ->
     f.pIsValidBot = true if d.version is f.pManager.version
     console.log "  - Bot #{d.id} is valid: #{f.pIsValidBot}"
+    {"version": d.version, "valid": f.pIsValidBot}
 
   @run: (d, f) ->
     throw {"id": 1, "msg": "Friend is undefined"} unless f?
@@ -10,4 +11,11 @@ class HandleResponse
 
     func = HandleResponse[d.resp]
     throw {"id": 3, "msg": "Unknown response"}    unless func?
-    func d, f
+    cb = f["RESP_#{d.resp}"]
+
+    if cb?
+      console.log "  - #{d.resp} callback registerd"
+      cb.call f, func d, f
+    else
+      console.log "  - NO callback for #{d.resp}"
+      func d, f

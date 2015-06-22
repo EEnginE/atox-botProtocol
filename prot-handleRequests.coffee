@@ -1,6 +1,8 @@
 module.exports =
 class HandleRequests
-  @ping: (d, f) -> console.log "  - HandleRequest ping #{d.id}"
+  @ping: (d, f) ->
+    console.log "  - HandleRequest ping #{d.id}"
+    return {}
 
   @run: (d, f) ->
     throw {"id": 1, "msg": "Friend is undefined"} unless f?
@@ -8,4 +10,11 @@ class HandleRequests
 
     func = HandleRequests[d.cmd]
     throw {"id": 3, "msg": "Unknown request"}     unless func?
-    func d, f
+    cb = f["REQ_#{d.cmd}"]
+
+    if cb?
+      console.log "  - #{d.cmd} callback registerd"
+      cb.call f, func d, f
+    else
+      console.log "  - NO callback for #{d.cmd}"
+      func d, f
