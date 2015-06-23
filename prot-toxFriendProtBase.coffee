@@ -47,6 +47,8 @@ class ToxFriendProtBase
       console.log "  - Failed to handle response"
       console.log e
 
+    @pManager.pReceivedResponse data.id
+
   pReceivedCommand: (cmd) ->
     try
       data = JSON.parse cmd
@@ -74,4 +76,4 @@ class ToxFriendProtBase
       console.log e
       return -1
 
-  pGetNewCommandID: -> @pCMDid++
+  pGetNewCommandID: -> @pManager.pGetNewCommandID()
