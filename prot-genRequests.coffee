@@ -1,6 +1,7 @@
 module.exports =
 class GenRequests
-  @ping: (f) -> {"version": f.pManager.version}
+  @ping:       (f) -> {"version": f.pManager.version}
+  @collabList: (f) -> {}
 
   @gen: (c, f) ->
     func = GenRequests[c]

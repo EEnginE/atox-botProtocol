@@ -7,3 +7,5 @@ class BotManager
 
   addBot: (TOXfriend) ->
     @pAToxClients.push TOXfriend
+
+  getCollabList: -> [] # Stub

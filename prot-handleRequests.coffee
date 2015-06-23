@@ -2,7 +2,9 @@ module.exports =
 class HandleRequests
   @ping: (d, f) ->
     console.log "  - HandleRequest ping #{d.id}"
-    return {}
+    return d
+
+  @collabList: (d, f) -> d
 
   @run: (d, f) ->
     throw {"id": 1, "msg": "Friend is undefined"} unless f?

@@ -1,6 +1,7 @@
 module.exports =
 class GenResponse
-  @ping: (f) -> {"version": f.pManager.version}
+  @ping:       (f) -> {"version": f.pManager.version}
+  @collabList: (f) -> {"list":    f.pManager.getCollabList()}
 
   @gen: (r, f) ->
     throw {"id": 1, "msg": "Friend is undefined"}  unless f?

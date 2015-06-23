@@ -5,6 +5,11 @@ class HandleResponse
     console.log "  - Bot #{d.id} is valid: #{f.pIsValidBot}"
     {"version": d.version, "valid": f.pIsValidBot}
 
+  @collabList: (d, f) ->
+    console.log "  - Updated collab list for #{f.pKey}"
+    f.pCollabList = d.list
+    d
+
   @run: (d, f) ->
     throw {"id": 1, "msg": "Friend is undefined"} unless f?
     throw {"id": 2, "msg": "Data is undefined"}   unless d?

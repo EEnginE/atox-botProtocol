@@ -16,6 +16,8 @@ class ToxFriendProtBase
     @pIsValidBot = false
     @pCMDid      = 0
 
+    @pCollabList = []
+
     @pSendCommand 'ping'
 
   pHandleRequests: (data) ->
@@ -66,8 +68,10 @@ class ToxFriendProtBase
       @pSendCB JSON.stringify data
       console.log "Sent CMD #{name} to #{@pID}"
       console.log data
+      return data.id
     catch e
       console.log "Failed to send CMD '#{name}'"
       console.log e
+      return -1
 
   pGetNewCommandID: -> @pCMDid++
