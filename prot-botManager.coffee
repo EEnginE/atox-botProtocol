@@ -7,7 +7,7 @@ class TimeoutHelper
   cancleOne: ->
     @counter--
     if @counter is 0 and @timeout?
-      cancleTimeout @timeout
+      clearTimeout @timeout
       @cb {"timeout": false}
 
   run: (t) ->
