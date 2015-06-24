@@ -23,7 +23,7 @@ class GenRequests
     func = GenRequests[o.cmd]
 
     return false unless func?
-    comp = func f
+    comp = func f, {}
 
     for i in comp
       found = false
