@@ -64,9 +64,9 @@ class ToxFriendProtBase
 
     console.log "  - Unknown OBJ"
 
-  pSendCommand: (name) ->
+  pSendCommand: (name, params={}) ->
     try
-      data = GenRequests.gen name, this
+      data = GenRequests.gen name, this, params
       @pSendCB JSON.stringify data
       console.log "Sent CMD #{name} to #{@pID}"
       console.log data

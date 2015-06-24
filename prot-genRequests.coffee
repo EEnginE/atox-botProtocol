@@ -1,14 +1,15 @@
 module.exports =
 class GenRequests
-  @ping:       (f) -> {"version": f.pManager.version}
-  @collabList: (f) -> {}
+  @ping:       (f, params) -> {"version": f.pManager.version}
+  @collabList: (f, params) -> {}
+  @joinCollab: (f, params) -> {"name": params.name}
 
-  @gen: (c, f) ->
+  @gen: (c, f, params) ->
     func = GenRequests[c]
     throw {"id": 1, "msg": "Friend is undefined"}       unless f?
     throw {"id": 2, "msg": "Unknown command", "cmd": c} unless func?
 
-    o     = func f
+    o     = func f, params
     o.cmd = c
     o.id  = f.pGetNewCommandID()
     return o

@@ -5,6 +5,10 @@ class HandleRequests
     return d
 
   @collabList: (d, f) -> d
+  @joinCollab: (d, f) ->
+    console.log "  - Received collab join request"
+    console.log "    - #{d.name}"
+    d
 
   @run: (d, f) ->
     throw {"id": 1, "msg": "Friend is undefined"} unless f?

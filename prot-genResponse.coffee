@@ -1,14 +1,20 @@
+# coffeelint: disable=max_line_length
+
 module.exports =
 class GenResponse
-  @ping:       (f) -> {"version": f.pManager.version}
-  @collabList: (f) -> {"list":    f.pManager.getCollabList()}
+  @ping:       (r, f) -> {"version": f.pManager.version}
+  @collabList: (r, f) -> {"list":    f.pManager.getCollabList()}
+  @joinCollab: (r, f) ->
+    ret = -1
+    ret = f.rCollabInviteReturn if f.rCollabInviteReturn?
+    {"inviteReturn": ret, "name": r.name}
 
   @gen: (r, f) ->
     throw {"id": 1, "msg": "Friend is undefined"}  unless f?
     throw {"id": 2, "msg": "Request is undefined"} unless r?
     func = GenResponse[r.cmd]
 
-    o      = func f
+    o      = func r, f
     o.resp = r.cmd
     o.id   = r.id
     return o

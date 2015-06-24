@@ -10,6 +10,11 @@ class HandleResponse
     f.pCollabList = d.list
     d
 
+  @joinCollab: (d, f) ->
+    console.log "  - Revieved collab invite response"
+    console.log "    - return value: #{d.inviteReturn}"
+    d
+
   @run: (d, f) ->
     throw {"id": 1, "msg": "Friend is undefined"} unless f?
     throw {"id": 2, "msg": "Data is undefined"}   unless d?
