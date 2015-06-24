@@ -28,7 +28,7 @@ class GenResponse
     func = GenResponse[o.resp]
 
     return false unless func?
-    comp = func f
+    comp = func {}, f
 
     for i in comp
       found = false
