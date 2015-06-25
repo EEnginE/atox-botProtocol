@@ -2,7 +2,7 @@ module.exports =
 class GenRequests
   @ping:       (f, params) -> {"version": f.pManager.version}
   @collabList: (f, params) -> {}
-  @joinCollab: (f, params) -> {"name": params.name}
+  @joinCollab: (f, params) -> {"name": params.name, "id": params.id}
 
   @gen: (c, f, params) ->
     func = GenRequests[c]

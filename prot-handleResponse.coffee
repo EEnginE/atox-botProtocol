@@ -11,7 +11,7 @@ class HandleResponse
     d
 
   @joinCollab: (d, f) ->
-    console.log "  - Revieved collab invite response"
+    console.log "  - Recieved collab invite response"
     console.log "    - return value: #{d.inviteReturn}"
     d
 
