@@ -24,8 +24,7 @@ class HandleResponse
     cb = f["RESP_#{d.resp}"]
 
     if cb?
-      console.log "  - #{d.resp} callback registerd"
+      console.log "  - Running callback"
       cb.call f, func d, f
     else
-      console.log "  - NO callback for #{d.resp}"
       func d, f

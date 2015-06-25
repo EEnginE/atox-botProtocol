@@ -1,14 +1,8 @@
 module.exports =
 class HandleRequests
-  @ping: (d, f) ->
-    console.log "  - HandleRequest ping #{d.id}"
-    return d
-
+  @ping:       (d, f) -> d
   @collabList: (d, f) -> d
-  @joinCollab: (d, f) ->
-    console.log "  - Received collab join request"
-    console.log "    - #{d.name}"
-    d
+  @joinCollab: (d, f) -> d
 
   @run: (d, f) ->
     throw {"id": 1, "msg": "Friend is undefined"} unless f?
@@ -19,8 +13,7 @@ class HandleRequests
     cb = f["REQ_#{d.cmd}"]
 
     if cb?
-      console.log "  - #{d.cmd} callback registerd"
+      console.log "  - Running callback"
       cb.call f, func d, f
     else
-      console.log "  - NO callback for #{d.cmd}"
       func d, f
