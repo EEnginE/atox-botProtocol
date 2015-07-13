@@ -25,9 +25,9 @@ class GenRequests
     return false unless func?
     comp = func f, {}
 
-    for i in comp
+    for i of comp
       found = false
-      for j in o
+      for j of o
         if i is j
           found = true
           break
