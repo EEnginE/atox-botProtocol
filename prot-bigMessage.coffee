@@ -51,15 +51,12 @@ class BigMessage
     return ret
 
   @receive: (msg, cb) ->
-    console.log msg
     return cb msg if msg.length <= ID_LENGTH
 
     try
       parsedMSG = JSON.parse msg
       unless @validateOBJ parsedMSG
-        console.log "THRPW"
         throw {}
-      console.log parsedMSG
 
       MSG[parsedMSG.id] = parsedMSG
       MSG[parsedMSG.id].lengthCount = 0
