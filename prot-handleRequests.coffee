@@ -12,8 +12,12 @@ class HandleRequests
     throw {"id": 3, "msg": "Unknown request"}     unless func?
     cb = f["REQ_#{d.cmd}"]
 
+    drop = false
+
     if cb?
       console.log "  - Running callback"
-      cb.call f, func d, f
+      if cb.call( f, func d, f ) is "drop" then drop = true
     else
       func d, f
+
+    return drop

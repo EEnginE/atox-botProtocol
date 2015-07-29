@@ -28,7 +28,9 @@ class ToxFriendProtBase
       console.log "  - Valid Request (#{data.cmd})"
 
     try
-      HandleRequests.run data, this
+      if HandleRequests.run( data, this ) is true # Drop request?
+        console.log "  - DROPPING REQUEST"
+        return
       response = GenResponse.gen data, this
       console.log " --> Sending response:"
       console.log response
